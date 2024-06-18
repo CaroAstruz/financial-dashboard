@@ -31,6 +31,7 @@ const style = {
 
 const SpendingMotivations = () => {
   return (
+    <div style={{width:'50%'}} className="flex-child">
     <RadialBarChart
       width={500}
       height={300}
@@ -55,7 +56,9 @@ const SpendingMotivations = () => {
         verticalAlign="middle"
         wrapperStyle={style}
       />
+    
     </RadialBarChart>
+    </div>
   );
 }
 

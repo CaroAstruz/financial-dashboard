@@ -552,7 +552,7 @@ const Page = () => {
       <p className="font-extrabold text-5xl ml-48">KPIs</p>
         <div className="flex flex-row justify-evenly items-center">
           <Select onValueChange={setYearString}>
-            <SelectTrigger className="w-[240px]">
+            <SelectTrigger className="w-[240px] text-black">
               <SelectValue placeholder="Sélectionnez une année" />
             </SelectTrigger>
             <SelectContent>
@@ -585,8 +585,8 @@ const Page = () => {
         <Separator className="my-10" />
 
         <p className="font-extrabold text-5xl ml-48">Habitudes utilisateurs</p>
-        <div className="flex flex-row h-auto items-center">
-          <SpendingMotivations />
+        <div className="flex flex-row h-auto items-center justify-evenly flex-parent">
+          <SpendingMotivations/>
           <BuyingHabits />
         </div>
         <Separator className="my-10" />
