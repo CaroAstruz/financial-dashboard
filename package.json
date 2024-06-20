@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://whynotgames.fr",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && npx tailwindcss -o build.css --minify",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
