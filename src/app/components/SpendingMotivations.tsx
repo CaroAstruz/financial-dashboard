@@ -1,5 +1,5 @@
+import { Badge } from "@/components/ui/badge";
 import { CardHeader, CardTitle, CardContent, Card } from "@/components/ui/card";
-import { BadgeDelta } from "@tremor/react";
 import React from "react";
 import { RadialBarChart, RadialBar, Legend } from "recharts";
 const data = [
@@ -29,9 +29,9 @@ const SpendingMotivations = () => {
           <CardTitle>
             Joueurs sur PC
             <br />
-            <BadgeDelta deltaType="increase">
+            <Badge>
               Sur la masse totale incluant téléphone/consoles/PC
-            </BadgeDelta>
+            </Badge>
           </CardTitle>
         </CardHeader>
       </Card>
@@ -39,7 +39,7 @@ const SpendingMotivations = () => {
         <CardHeader>
           <CardTitle>
             Achetant à prix réduits
-            <BadgeDelta>Réductions ou site tiers en grey market</BadgeDelta>
+            <Badge>Réductions ou site tiers en grey market</Badge>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -50,7 +50,7 @@ const SpendingMotivations = () => {
         <CardHeader>
           <CardTitle>
             Dépensant par dons
-            <BadgeDelta>Volonté de soutien aux développeurs</BadgeDelta>
+            <Badge>Volonté de soutien aux développeurs</Badge>
           </CardTitle>
         </CardHeader>
         <CardContent>
