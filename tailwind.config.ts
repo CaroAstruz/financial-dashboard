@@ -1,15 +1,15 @@
 import type { Config } from "tailwindcss"
 import colors from 'tailwindcss/colors'
 const config = {
-  "paths": {
-    "styles/*": ["./styles/*"]
-  },
+"paths": {
+    "@/*": ["./src/*"]
+},
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    '.src/components/**/*.{ts,tsx}',
+    './src/app/**/*.{ts,tsx}',
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',
 
 	],
