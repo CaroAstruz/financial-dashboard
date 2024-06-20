@@ -46,7 +46,7 @@ const SalesComparison = (selectedDataRange: any) => {
           <YAxis />
           <Legend onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
           <Line type="monotone" name="Revenus sans marché de l'occasion" dataKey="rnn" strokeOpacity={opacity.rnn} stroke="#82ca9d" />
-          <Tooltip labelStyle={{ color: "black", 'font-weight': "bold" }} />
+          <Tooltip labelStyle={{ color: "black"}} />
         </LineChart>
       </ResponsiveContainer>
       <ResponsiveContainer height={300} className="flex-child" >
@@ -65,7 +65,7 @@ const SalesComparison = (selectedDataRange: any) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip labelStyle={{ color: "black", 'font-weight': "bold" }} />
+          <Tooltip labelStyle={{ color: "black" }} />
           <Legend onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
           <Line type="monotone" name='Revenus neuf' dataKey="rn" strokeOpacity={opacity.rn} stroke="#FFBD99" activeDot={{ r: 8 }} />
           <Line type="monotone" name="Revenus d'occasion" dataKey="ro" strokeOpacity={opacity.ro} stroke="#D566AF" />
