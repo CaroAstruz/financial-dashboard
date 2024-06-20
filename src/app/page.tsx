@@ -674,30 +674,15 @@ const Page = () => {
         <p className="font-extrabold text-5xl ml-24 mb-10">
           Courbes de revenus
         </p>
-        <div className="flex flex-row justify-evenly">
-          <div className=" ml-8 h-auto flex flex-col justify-around items-center">
-            <Select onValueChange={setYearString}>
-              <SelectTrigger className="w-[360px] text-black bg-cream border-dark-blue border-opacity-25">
-                <SelectValue placeholder="Sélectionnez une durée" />
-              </SelectTrigger>
-              <SelectContent className="bg-cream">
-                <SelectGroup>
-                  <SelectLabel>Année</SelectLabel>
-                  <SelectItem value="1">N+1</SelectItem>
-                  <SelectItem value="2">N+2</SelectItem>
-                  <SelectItem value="3">N+3</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Card className="w-[360px] h-full mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <div className="h-[160px] flex flex-row items-center justify-evenly m-16">
+        <Card className="w-[360px] h-full">
               <CardHeader>
                 <CardTitle>Utilisateurs année {yearString}</CardTitle>
               </CardHeader>
               <CardContent>
-                <Badge variant={"destructive"}>{Y1_USERS}</Badge>
               </CardContent>
             </Card>
-            <Card className="w-[360px] h-full mt-4 border-dark-blue border-opacity-25 bg-cream">
+            <Card className="w-[360px] h-full ">
               <CardHeader>
                 <CardTitle>Catalogue de jeux année {yearString}</CardTitle>
               </CardHeader>
@@ -705,8 +690,21 @@ const Page = () => {
                 <p>{Y1_USERS}</p>
               </CardContent>
             </Card>
+            </div>
+        <div className="flex flex-col items-center justify-evenly">
+        <Select onValueChange={setYearString}>
+              <SelectTrigger className="w-auto ">
+                <SelectValue placeholder="Sélectionnez une durée" />
+              </SelectTrigger>
+              <SelectContent position="popper" side='bottom' sticky="always" avoidCollisions={false}>
+                  <SelectItem value="1">N+1</SelectItem>
+                  <SelectItem value="2">N+2</SelectItem>
+                  <SelectItem value="3">N+3</SelectItem>
+              </SelectContent>
+            </Select>
+           <div className=" ml-8 h-auto flex flex-col justify-around items-center">
           </div>
-          <SalesComparison data={selectedDataRange} />
+                  <SalesComparison data={selectedDataRange} />
         </div>
       </div>
     </div>

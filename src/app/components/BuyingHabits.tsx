@@ -12,8 +12,8 @@ import {
 
 const BuyingHabits = () => {
   return (
-    <div style={{ width: "50%" }} className="flex-child">
-      <ResponsiveContainer height={300} width="100%">
+    <div style={{ width: "100%"}} className="flex-parent">
+      <ResponsiveContainer height={300} className="flex-child">
         <ComposedChart
           data={[
             {

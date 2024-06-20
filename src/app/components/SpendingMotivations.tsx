@@ -1,7 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { CardHeader, CardTitle, CardContent, Card } from "@/components/ui/card";
 import React from "react";
-import { RadialBarChart, RadialBar, Legend } from "recharts";
+import {
+  RadialBarChart,
+  RadialBar,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 const data = [
   {
     name: "Joueurs PC",
@@ -20,44 +25,44 @@ const data = [
 
 const SpendingMotivations = () => {
   return (
-    <span style={{ width: "50%" }} className="flex-child">
-      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
-        <CardContent>
-          <p>80%</p>
-        </CardContent>
-        <CardHeader>
-          <CardTitle>
-            Joueurs sur PC
-            <br />
-            <Badge>
-              Sur la masse totale incluant téléphone/consoles/PC
-            </Badge>
-          </CardTitle>
-        </CardHeader>
-      </Card>
-      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
-        <CardHeader>
-          <CardTitle>
-            Achetant à prix réduits
-            <Badge>Réductions ou site tiers en grey market</Badge>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>50%</p>
-        </CardContent>
-      </Card>
-      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
-        <CardHeader>
-          <CardTitle>
-            Dépensant par dons
-            <Badge>Volonté de soutien aux développeurs</Badge>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>25%</p>
-        </CardContent>
-      </Card>
-    </span>
+    <div style={{ width: "50%" }} className="flex-parent">
+      <ResponsiveContainer height={150} className="flex-child">
+        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+          <CardContent>
+            <p>80%</p>
+          </CardContent>
+          <CardHeader>
+            <CardTitle>
+              Joueurs sur PC
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        </ResponsiveContainer>
+        <ResponsiveContainer height={150} className="flex-child">
+        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+          <CardHeader>
+            <CardTitle>
+              Achetant à prix réduits
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>50%</p>
+          </CardContent>
+        </Card>
+        </ResponsiveContainer>
+        <ResponsiveContainer height={150} className="flex-child">
+        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+          <CardHeader>
+            <CardTitle>
+              Dépensant par dons
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>25%</p>
+          </CardContent>
+        </Card>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
