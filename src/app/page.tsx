@@ -1,113 +1,716 @@
-import Image from "next/image";
+"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SalesComparison from "./components/SalesComparison";
+import BuyingHabits from "./components/BuyingHabits";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
+import { Separator } from "@/components/ui/separator";
+import SpendingMotivations from "./components/SpendingMotivations";
+import { Badge } from "@/components/ui/badge";
+import { Cell, Pie, PieChart, Tooltip } from "recharts";
+const Page = () => {
+  const Y1_USERS = "15 000 total users";
+  const [yearString, setYearString] = useState("1");
 
-export default function Home() {
+  const dataY1 = [
+    {
+      name: "M",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+1",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+2",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+3",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+4",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+5",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+6",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+7",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+8",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+9",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+10",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+11",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+  ];
+  const dataY2 = [
+    {
+      name: "M",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+1",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+2",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+3",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+4",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+5",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+6",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+7",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+8",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+9",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+10",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+11",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+12",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+13",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+14",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+15",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+16",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+17",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+18",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+19",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+20",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+21",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+22",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+23",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+  ];
+  const dataY3 = [
+    {
+      name: "M",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+1",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+2",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+3",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+4",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+5",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+6",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+7",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+8",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+9",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+10",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+11",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+12",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+13",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+14",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+15",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+16",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+17",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+18",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+19",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+20",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+21",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+22",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+23",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+24",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+25",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+26",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+27",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+28",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+29",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+30",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+31",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+32",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+33",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+34",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+    {
+      name: "M+35",
+      rnn: Math.floor(Math.random() * 15000),
+      ro: Math.floor(Math.random() * 15000),
+      rn: Math.floor(Math.random() * 15000),
+      rw: Math.floor(Math.random() * 15000),
+    },
+  ];
+
+  const salesSplitWNGused = [
+    {
+      name: "Utilisateurs",
+      value: 75,
+    },
+    {
+      name: "Développeurs",
+      value: 15,
+    },
+    {
+      name: "Why Not Games",
+      value: 10,
+    },
+  ];
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  let selectedDataRange: any = [];
+
+  switch (yearString) {
+    case "1":
+      selectedDataRange = dataY1;
+      break;
+    case "2":
+      selectedDataRange = dataY2;
+      break;
+    case "3":
+      selectedDataRange = dataY3;
+      break;
+  }
+
+  console.log(selectedDataRange);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <div className="min-h-screen w-full py-12 flex justify-evenly items-center">
+      <div className="relative w-full mx-auto text-black">
+        <div className="flex flex-row justify-evenly">
+          <span>
+            <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
+              <p className="font-extrabold text-5xl mb-10">
+                Habitudes utilisateurs
+              </p>
+              <div className="flex flex-row h-auto items-center justify-evenly flex-parent">
+                <SpendingMotivations />
+                <BuyingHabits />
+              </div>
+            </Card>
+          </span>
+          <span>
+            <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
+              <p className="font-extrabold text-5xl mb-10">
+                Répartitions du prix de vente
+              </p>
+              <div className="flex flex-row h-auto items-center justify-between">
+                <span className="flex flex-col items-center">
+                  <p>Why Not Games</p>
+                  <PieChart width={300} height={250}>
+                    <Pie
+                      data={salesSplitWNGused}
+                      innerRadius={60}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      paddingAngle={5}
+                      dataKey="value"
+                      label
+                    >
+                      {salesSplitWNGused.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Pie
+                      data={salesSplitWNGused}
+                      innerRadius={30}
+                      outerRadius={50}
+                      fill="#8884d8"
+                      paddingAngle={5}
+                      dataKey="value"  
+                    >
+                      {salesSplitWNGused.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </span>
+                <span className="flex flex-col items-center">
+                  <p>Steam </p>
+                  <PieChart width={300} height={250}>
+                    <Pie
+                      data={salesSplitWNGused}
+                      innerRadius={60}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      paddingAngle={5}
+                      dataKey="value"
+                      label
+                    >
+                      {salesSplitWNGused.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </span>
+                <span className="flex flex-col items-center">
+                  <p>Epic Games</p>
+                  <PieChart width={300} height={250}>
+                    <Pie
+                      data={salesSplitWNGused}
+                      innerRadius={60}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      paddingAngle={5}
+                      dataKey="value"
+                      label
+                    >
+                      {salesSplitWNGused.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </span>
+              </div>
+            </Card>
+          </span>
+        </div>
+        <Separator className="my-10 bg-dark-blue bg-opacity-25" />
+
+        <p className="font-extrabold text-5xl ml-24 mb-10">
+          Courbes de revenus
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <div className="flex flex-row justify-evenly">
+          <div className=" ml-8 h-auto flex flex-col justify-around items-center">
+            <Select onValueChange={setYearString}>
+              <SelectTrigger className="w-[360px] text-black bg-cream border-dark-blue border-opacity-25">
+                <SelectValue placeholder="Sélectionnez une durée" />
+              </SelectTrigger>
+              <SelectContent className="bg-cream">
+                <SelectGroup>
+                  <SelectLabel>Année</SelectLabel>
+                  <SelectItem value="1">N+1</SelectItem>
+                  <SelectItem value="2">N+2</SelectItem>
+                  <SelectItem value="3">N+3</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Card className="w-[360px] h-full mt-8 border-dark-blue border-opacity-25 bg-cream">
+              <CardHeader>
+                <CardTitle>Utilisateurs année {yearString}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Badge variant={"destructive"}>{Y1_USERS}</Badge>
+              </CardContent>
+            </Card>
+            <Card className="w-[360px] h-full mt-4 border-dark-blue border-opacity-25 bg-cream">
+              <CardHeader>
+                <CardTitle>Catalogue de jeux année {yearString}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>{Y1_USERS}</p>
+              </CardContent>
+            </Card>
+          </div>
+          <SalesComparison data={selectedDataRange} />
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default Page;

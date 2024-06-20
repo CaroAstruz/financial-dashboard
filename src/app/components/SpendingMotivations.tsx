@@ -1,65 +1,64 @@
+import { CardHeader, CardTitle, CardContent, Card } from "@/components/ui/card";
+import { BadgeDelta } from "@tremor/react";
 import React from "react";
 import { RadialBarChart, RadialBar, Legend } from "recharts";
-
 const data = [
   {
-    name: "Joueur PC",
+    name: "Joueurs PC",
     uv: 85,
-    pv: 2400,
     fill: "#8884d8",
   },
   {
-    name: "Achète ses jeux à prix réduit",
-    uv: 80,
-    pv: 1398,
+    name: "Achètent leurs jeux à prix réduit",
     fill: "#8dd1e1",
   },
   {
-    name: "Dépense par don",
-    uv:25,
-    pv: 4567,
+    name: "Dépensent par don",
     fill: "#83a6ed",
   },
-
 ];
-
-const style = {
-  top: 0,
-  left: 350,
-  lineHeight: "24px",
-};
 
 const SpendingMotivations = () => {
   return (
-    <div style={{width:'50%'}} className="flex-child">
-    <RadialBarChart
-      width={500}
-      height={300}
-      cx={150}
-      cy={150}
-      innerRadius={20}
-      outerRadius={140}
-      barSize={30}
-      data={data}
-    >
-      <RadialBar
-        label={{ position: "outside", fill: "#fff" }}
-        background
-        dataKey="uv"
-        
-      />
-      <Legend
-        iconSize={10}
-        width={200}
-        height={140}
-        layout="vertical"
-        verticalAlign="middle"
-        wrapperStyle={style}
-      />
-    
-    </RadialBarChart>
-    </div>
+    <span style={{ width: "50%" }} className="flex-child">
+      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <CardContent>
+          <p>80%</p>
+        </CardContent>
+        <CardHeader>
+          <CardTitle>
+            Joueurs sur PC
+            <br />
+            <BadgeDelta deltaType="increase">
+              Sur la masse totale incluant téléphone/consoles/PC
+            </BadgeDelta>
+          </CardTitle>
+        </CardHeader>
+      </Card>
+      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <CardHeader>
+          <CardTitle>
+            Achetant à prix réduits
+            <BadgeDelta>Réductions ou site tiers en grey market</BadgeDelta>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>50%</p>
+        </CardContent>
+      </Card>
+      <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <CardHeader>
+          <CardTitle>
+            Dépensant par dons
+            <BadgeDelta>Volonté de soutien aux développeurs</BadgeDelta>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>25%</p>
+        </CardContent>
+      </Card>
+    </span>
   );
-}
+};
 
-export default SpendingMotivations
+export default SpendingMotivations;
