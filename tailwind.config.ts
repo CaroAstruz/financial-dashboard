@@ -1,6 +1,9 @@
 import type { Config } from "tailwindcss"
 import colors from 'tailwindcss/colors'
 const config = {
+  "paths": {
+    "styles/*": ["./styles/*"]
+  },
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
