@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        Outfit :['Outfit', 'sans-serif'],
+        Rubik: ['Rubik', 'sans-serif'],
+        Hind: ['Hind', 'sans-serif']
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

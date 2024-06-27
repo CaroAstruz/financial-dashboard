@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
-
+  
+  
   @layer base {
+    h1{
+      @apply font-Outfit font-black text-3xl uppercase mb-4
+    }
+
+    h2 {
+      @apply font-Rubik font-bold text-2xl mb-2
+    }
+
+    h3 {
+      @apply font-Rubik font-medium text-2xl
+    }
+
+    body {
+      @apply font-Hind font-light text-lg mb-1
+    }
+
+    .secondary-text {
+      @apply font-Hind font-light text-base 
+    }
     :root {
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
@@ -74,3 +97,4 @@
       @apply bg-background text-foreground;
     }
   }
+

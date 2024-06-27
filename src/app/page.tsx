@@ -4,18 +4,14 @@ import SalesComparison from "./components/SalesComparison";
 import BuyingHabits from "./components/BuyingHabits";
 import {
   Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
+  SelectContent, SelectItem, SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import SpendingMotivations from "./components/SpendingMotivations";
-import { Badge } from "@/components/ui/badge";
-import { Cell, Pie, PieChart, Tooltip } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+
 const Page = () => {
   const Y1_USERS = "15 000 total users";
   const [yearString, setYearString] = useState("1");
@@ -562,12 +558,11 @@ const Page = () => {
       break;
   }
 
-  console.log(selectedDataRange);
   return (
-    <div className="min-h-screen w-full py-12 flex justify-evenly items-center">
+    <div className="min-h-screen w-full py-12 flex justify-evenly items-center p-4">
       <div className="relative w-full mx-auto text-black">
         <div className="flex flex-row justify-evenly">
-          <span>
+          <ResponsiveContainer>
             <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
               <p className="font-extrabold text-5xl mb-10">
                 Habitudes utilisateurs
@@ -577,8 +572,8 @@ const Page = () => {
                 <BuyingHabits />
               </div>
             </Card>
-          </span>
-          <span>
+          </ResponsiveContainer>
+          <ResponsiveContainer>
             <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
               <p className="font-extrabold text-5xl mb-10">
                 Répartitions du prix de vente
@@ -667,7 +662,7 @@ const Page = () => {
                 </span>
               </div>
             </Card>
-          </span>
+          </ResponsiveContainer>
         </div>
         <Separator className="my-10 bg-dark-blue bg-opacity-25" />
 
