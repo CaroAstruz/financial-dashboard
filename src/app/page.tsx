@@ -4,8 +4,10 @@ import SalesComparison from "./components/SalesComparison";
 import BuyingHabits from "./components/BuyingHabits";
 import {
   Select,
-  SelectContent, SelectItem, SelectTrigger,
-  SelectValue
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
@@ -559,25 +561,21 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen w-full py-12 flex justify-evenly items-center p-4">
+    <div className="min-h-screen w-full flex justify-evenly items-center">
       <div className="relative w-full mx-auto text-black">
         <div className="flex flex-row justify-evenly">
-          <ResponsiveContainer>
+        <ResponsiveContainer className="flex-child p-1 lg:p-2">
             <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
-              <p className="font-extrabold text-5xl mb-10">
-                Habitudes utilisateurs
-              </p>
+              <h1>Habitudes utilisateurs</h1>
               <div className="flex flex-row h-auto items-center justify-evenly flex-parent">
                 <SpendingMotivations />
                 <BuyingHabits />
               </div>
             </Card>
           </ResponsiveContainer>
-          <ResponsiveContainer>
+          <ResponsiveContainer className="flex-child p-1 lg:p-2">
             <Card className="w-full h-full p-8 border-dark-blue border-opacity-25 bg-cream">
-              <p className="font-extrabold text-5xl mb-10">
-                Répartitions du prix de vente
-              </p>
+              <h1>Répartitions du prix de vente</h1>
               <div className="flex flex-row h-auto items-center justify-between">
                 <span className="flex flex-col items-center">
                   <p>Why Not Games</p>
@@ -604,7 +602,7 @@ const Page = () => {
                       outerRadius={50}
                       fill="#8884d8"
                       paddingAngle={5}
-                      dataKey="value"  
+                      dataKey="value"
                     >
                       {salesSplitWNGused.map((entry, index) => (
                         <Cell
@@ -665,41 +663,55 @@ const Page = () => {
           </ResponsiveContainer>
         </div>
         <Separator className="my-10 bg-dark-blue bg-opacity-25" />
-
-        <p className="font-extrabold text-5xl ml-24 mb-10">
-          Courbes de revenus
-        </p>
-        <div className="h-[160px] flex flex-row items-center justify-evenly m-16">
-        <Card className="w-[360px] h-full">
+        <h1>Courbes de revenus</h1>
+        <div className="flex-parent flex flex-row mb-4 ">
+          <ResponsiveContainer className="flex-child p-1 lg:p-2">
+            <Card className="max-h-full">
               <CardHeader>
-                <CardTitle>Utilisateurs année {yearString}</CardTitle>
+                <CardTitle>
+                  <h2>Année {yearString}</h2>
+                  <h2>Utilisateurs</h2>
+                </CardTitle>
               </CardHeader>
               <CardContent>
+                {" "}
+                <p>{Y1_USERS}</p>
               </CardContent>
             </Card>
-            <Card className="w-[360px] h-full ">
+          </ResponsiveContainer>
+          <ResponsiveContainer className="flex-child p-1 lg:p-2">
+            <Card>
               <CardHeader>
-                <CardTitle>Catalogue de jeux année {yearString}</CardTitle>
+                <CardTitle>
+                  <h2>Année {yearString}</h2>
+                  <h2>Jeux </h2>
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p>{Y1_USERS}</p>
               </CardContent>
             </Card>
-            </div>
+          </ResponsiveContainer>
+        </div>
         <div className="flex flex-col items-center justify-evenly">
-        <Select onValueChange={setYearString}>
-              <SelectTrigger className="w-auto ">
-                <SelectValue placeholder="Sélectionnez une durée" />
-              </SelectTrigger>
-              <SelectContent position="popper" side='bottom' sticky="always" avoidCollisions={false}>
-                  <SelectItem value="1">N+1</SelectItem>
-                  <SelectItem value="2">N+2</SelectItem>
-                  <SelectItem value="3">N+3</SelectItem>
-              </SelectContent>
-            </Select>
-           <div className=" ml-8 h-auto flex flex-col justify-around items-center">
-          </div>
-                  <SalesComparison data={selectedDataRange} />
+          <Select onValueChange={setYearString}>
+            <SelectTrigger className="w-auto ">
+              <SelectValue placeholder="Sélectionnez une durée" />
+            </SelectTrigger>
+            <SelectContent
+              position="popper"
+              side="bottom"
+              sticky="always"
+              avoidCollisions={false}
+            >
+              <SelectItem value="1">N+1</SelectItem>
+              <SelectItem value="2">N+2</SelectItem>
+              <SelectItem value="3">N+3</SelectItem>
+            </SelectContent>
+          </Select>
+
+            <SalesComparison data={selectedDataRange} />
+
         </div>
       </div>
     </div>

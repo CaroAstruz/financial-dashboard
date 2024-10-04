@@ -36,7 +36,7 @@ const SalesComparison = (selectedDataRange: any) => {
 
   return (
     <div style={{ width: "100%" }} className="flex-parent">
-      <h1>Revenus sans marché de l'occasion</h1>
+      <h2>Revenus sans marché de l'occasion</h2>
       <ResponsiveContainer height={200} className="flex-child">
         <LineChart
           width={500}
@@ -64,7 +64,7 @@ const SalesComparison = (selectedDataRange: any) => {
           <Tooltip labelStyle={{ color: "black" }} />
         </LineChart>
       </ResponsiveContainer>
-      <h1>Revenus Why Not Games</h1>
+      <h2>Revenus Why Not Games</h2>
       <ResponsiveContainer height={200} className="flex-child">
         <LineChart
           width={500}
@@ -92,7 +92,7 @@ const SalesComparison = (selectedDataRange: any) => {
           />
         </LineChart>
       </ResponsiveContainer>
-      <h1>Détails revenus neuf et occasion</h1>
+      <h2>Détails revenus neuf et occasion</h2>
       <ResponsiveContainer height={200} className="flex-child">
         <LineChart
           width={500}

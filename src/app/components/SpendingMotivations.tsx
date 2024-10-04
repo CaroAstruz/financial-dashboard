@@ -25,44 +25,40 @@ const data = [
 
 const SpendingMotivations = () => {
   return (
-    <div style={{ width: "50%" }} className="flex-parent">
-      <ResponsiveContainer height={150} className="flex-child">
-        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+    <ResponsiveContainer>
+    <div className="flex flex-col items-start justify-evenly lg:flex-row">
+        <Card className=" h-fit m-2 border-darkblue border-opacity-25 bg-cream">
+          <CardHeader>
+            <CardTitle>
+              <h2>Joueurs sur PC</h2>
+            </CardTitle>
+          </CardHeader>
           <CardContent>
             <p>80%</p>
           </CardContent>
-          <CardHeader>
-            <CardTitle>
-              Joueurs sur PC
-            </CardTitle>
-          </CardHeader>
         </Card>
-        </ResponsiveContainer>
-        <ResponsiveContainer height={150} className="flex-child">
-        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <Card className="  h-fit m-2 border-dark-blue border-opacity-25 bg-cream">
           <CardHeader>
             <CardTitle>
-              Achetant à prix réduits
+            <h2> Achetant à prix réduits</h2>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p>50%</p>
           </CardContent>
         </Card>
-        </ResponsiveContainer>
-        <ResponsiveContainer height={150} className="flex-child">
-        <Card className="w-[360px] h-fit mt-8 border-dark-blue border-opacity-25 bg-cream">
+        <Card className="  h-fit m-2 border-dark-blue border-opacity-25 bg-cream">
           <CardHeader>
             <CardTitle>
-              Dépensant par dons
+            <h2> Dépensant par dons</h2>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p>25%</p>
           </CardContent>
         </Card>
-      </ResponsiveContainer>
     </div>
+    </ResponsiveContainer>
   );
 };
 
