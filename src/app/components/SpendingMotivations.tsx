@@ -26,7 +26,7 @@ const data = [
 const SpendingMotivations = () => {
   return (
     <ResponsiveContainer>
-    <div className="flex flex-row items-start justify-evenly">
+    <div className="flex flex-col items-start justify-evenly lg:flex-row">
         <Card className=" h-fit m-2 border-darkblue border-opacity-25 bg-cream">
           <CardHeader>
             <CardTitle>
