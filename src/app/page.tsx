@@ -40,7 +40,7 @@ const Page = () => {
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-  let selectedDataRange: number;
+  let selectedDataRange= 12;
 
   switch (yearString) {
     case "1":
