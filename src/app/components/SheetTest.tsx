@@ -8,76 +8,31 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Brush,
 } from "recharts";
-import React, { useEffect, useState } from "react";
-import { fetchGoogleSheetData } from "@/services/googleSheetsService";
-interface SalesComparisonProps {
-  selectedDataRange: number;
-}
+import React from "react";
 
-const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) => {
-  const [data, setData] = useState<any[]>([]);
-  const [opacity, setOpacity] = useState({
+const SheetTest = (selectedDataRange: any) => {
+  const [opacity, setOpacity] = React.useState({
     rn: 1,
     rnn: 1,
     ro: 1,
     rw: 1,
   });
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const sheetData = await fetchGoogleSheetData();
-
-        if (sheetData.length === 0) {
-          console.error("No data fetched from Google Sheets");
-          return;
-        }
-
-        // Assuming the first row is the header and the rest are data rows
-        const headers = sheetData[0];
-
-        const dataRows = sheetData.slice(1).map((row: any[], index: number) => {
-          const obj: any = {};
-          headers.forEach((header: string, colIndex: number) => {
-            // Convert string values to integers
-            const value = row[colIndex]?.toString().replace(/,/g, '');
-            obj[header] = isNaN(value) ? value : parseInt(value, 10);
-          });
-          return obj;
-        });
-
-        setData(dataRows);
-      } catch (error) {
-        console.error("Error fetching data from Google Sheets:", error);
-      }
-    };
-
-    getData();
-  }, []);
-
-  const selectedData = data.map((row: any) => {
-    return {
-      name: "M+" + row.NB, // X-axis data
-      rnn: parseInt(row.Revenue_No_Used, 10), // Line data for 'Revenus sans marché de l'occasion'
-      rw: parseInt(row.Revenue_WNG, 10),      // Line data for 'Revenus Why Not Games'
-      rn: parseInt(row.revenue_New, 10),      // Line data for 'Neuf'
-      ro: parseInt(row.Revenue_Used, 10),     // Line data for 'Occasion'
-    };
-  });
-
-
-  const splicedData = selectedData.splice(0, selectedDataRange)
-
   const handleMouseEnter = (o: any) => {
     const { dataKey } = o;
+
     setOpacity((op) => ({ ...op, [dataKey]: 0.5 }));
   };
 
   const handleMouseLeave = (o: any) => {
     const { dataKey } = o;
+
     setOpacity((op) => ({ ...op, [dataKey]: 1 }));
   };
+
+  console.log(selectedDataRange.data);
 
   return (
     <div style={{ width: "100%" }} className="flex-parent">
@@ -86,7 +41,7 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
         <LineChart
           width={500}
           height={300}
-          data={splicedData}
+          data={selectedDataRange.data}
           syncId="sales"
           margin={{
             top: 5,
@@ -98,6 +53,7 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" className="text-xs" />
           <YAxis tickCount={4} tickLine={false} className="text-xs" />
+          
           <Line
             type="monotone"
             name="Revenus"
@@ -113,7 +69,7 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
         <LineChart
           width={500}
           height={300}
-          data={splicedData}
+          data={selectedDataRange.data}
           syncId="sales"
           margin={{
             top: 5,
@@ -126,6 +82,7 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
           <XAxis dataKey="name" className="text-xs" />
           <YAxis tickCount={4} tickLine={false} className="text-xs" />
           <Tooltip labelStyle={{ color: "black" }} />
+          
           <Line
             type="monotone"
             name="Revenus"
@@ -140,7 +97,7 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
         <LineChart
           width={500}
           height={300}
-          data={splicedData}
+          data={selectedDataRange.data}
           syncId="sales"
           margin={{
             top: 5,
@@ -178,4 +135,4 @@ const SalesComparison: React.FC<SalesComparisonProps> = ({ selectedDataRange }) 
   );
 };
 
-export default SalesComparison;
+export default SheetTest;
