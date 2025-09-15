@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_KEY = 'AIzaSyDNFRXtQLAsBKPaXbPu61MJEEU4kdttjrM';
 const SPREADSHEET_ID = '1thZICYiZYWBFLk3vxX_DF9pOjf8T29KtKiGeGC4eI2I';
-const SHEET_NAME = 'Price evolution';
+const SHEET_NAME = 'Hardcoded';
 
 export const fetchGoogleSheetData = async () => {
   try {
