@@ -87,7 +87,16 @@ const Page = () => {
   }, []);
   const [yearString, setYearString] = useState("1");
 
-
+  const salesSplitWNGnew = [
+    {
+      name: "Développeurs",
+      value: 80,
+    },
+    {
+      name: "Why Not Games",
+      value: 20,
+    },
+  ];
   const salesSplitWNGused = [
     {
       name: "Utilisateurs",
@@ -103,7 +112,28 @@ const Page = () => {
     },
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const salesSplitEpic = [
+    {
+      name : "Développeurs",
+      value : 70,
+    },
+        {
+      name : "Epic Games",
+      value : 30,
+    }
+  ];
+    const salesSplitSteam = [
+    {
+      name : "Développeurs",
+      value : 92,
+    },
+        {
+      name : "Steam",
+      value : 8,
+    }
+  ]
+
+  const COLORS = ["#fe9000ff", "#eb95caff", "#3fda99ff", "#FF8042"];
 
   let selectedDataRange = 12;
 
@@ -164,7 +194,7 @@ const Page = () => {
                   <p>Why Not Games</p>
                   <PieChart width={300} height={250}>
                     <Pie
-                      data={salesSplitWNGused}
+                      data={salesSplitWNGnew}
                       innerRadius={60}
                       outerRadius={80}
                       fill="#8884d8"
@@ -172,7 +202,7 @@ const Page = () => {
                       dataKey="value"
                       label
                     >
-                      {salesSplitWNGused.map((entry, index) => (
+                      {salesSplitWNGnew.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -198,10 +228,10 @@ const Page = () => {
                   </PieChart>
                 </span>
                 <span className="flex flex-col items-center">
-                  <p>Steam </p>
+                  <p>Steam</p>
                   <PieChart width={300} height={250}>
                     <Pie
-                      data={salesSplitWNGused}
+                      data={salesSplitSteam}
                       innerRadius={60}
                       outerRadius={80}
                       fill="#8884d8"
@@ -209,7 +239,7 @@ const Page = () => {
                       dataKey="value"
                       label
                     >
-                      {salesSplitWNGused.map((entry, index) => (
+                      {salesSplitSteam.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -223,7 +253,7 @@ const Page = () => {
                   <p>Epic Games</p>
                   <PieChart width={300} height={250}>
                     <Pie
-                      data={salesSplitWNGused}
+                      data={salesSplitEpic}
                       innerRadius={60}
                       outerRadius={80}
                       fill="#8884d8"
@@ -231,7 +261,7 @@ const Page = () => {
                       dataKey="value"
                       label
                     >
-                      {salesSplitWNGused.map((entry, index) => (
+                      {salesSplitEpic.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
